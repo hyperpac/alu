@@ -1,0 +1,84 @@
+﻿Licence and Copyright
+=====================
+
+ALU (Automatically Load URL) - Copyright 2017 Sebastian Becker, Philipp Schwetschenau.
+Licenced under the GPLv3.
+
+This file is part of ALU (Automatically Load URL).
+
+ALU is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ALU is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ALU.  If not, see <http://www.gnu.org/licenses/>.
+
+What is ALU (Automatically Load URL)
+====================================
+
+ALU is a very small peace of code written in HTML and Javascript and designed to
+automatically load an URL and display the content of the URL inside an iframe.
+
+Is ALU polished and complete
+============================
+
+No. Really no. ALU was designed for a very special setting (read below) and never
+meant to do anything else. However feel free to make it better in every single
+way.
+
+What can ALU be used for
+========================
+
+ALU was designed for a very special setting. A random user presented a smartcard
+to a smartcard reader. The only content of the smartcard was a personalized URL for
+that particlar user. The goal was, that the URL on the smartcard was automatically read,
+opened and the content of the URL presented to the user in an iframe inside the
+browser window. The smartcard reader behaved like pasted text from a keyboard.
+
+What ALU can´t do
+=================
+
+ALU will NOT work with websites that send the "X-Frame-Options: SAMEORIGIN" header (like 
+Google and Amazon do).
+
+Read here why: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options 
+
+What types of URL´s are supported
+=================================
+
+Currently ALU only supports http and https (e.g. http://www.yoururl.com or 
+https://www.anotherurl.com).
+
+How does ALU work
+=================
+
+ALU uses HTML and Javascript. ALU uses a textbox that "waits" for the user input.
+Only input that is provided in one piece will work, for example if you paste an
+URL to the textbox. 
+
+ALU then loads this input into an iframe (the content of the url) and clears the
+input textbox, so that it is ready for the next input.
+
+How ALU can be configured
+=========================
+
+ALU can be configured directly within the alu.html. However the only real things
+to configure are the height and width of the iframe, which are hardcoded to
+1024px width and 768px height.
+
+Because ALU is plain HTML and Javascript you can change / configure it to nearly
+anything you want it to be. 
+
+List of files shipped with ALU
+==============================
+
+alu.html - program logic, user interface
+COPYING - GPLv3 licence 
+README - the document you are reading
+

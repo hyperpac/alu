@@ -1,0 +1,64 @@
+<!--
+ALU (Automatically Load URL) - Copyright 2017 Sebastian Becker, Philipp Schwetschnenau.
+Licenced under the GPLv3.
+
+This file is part of ALU (Automatically Load URL).
+
+ALU is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ALU is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ALU.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+	<head>
+	</head>
+	<body>
+		<script type="text/javascript">
+			<!-- load url that is pasted into the html textbox urlSource -->
+			function loadUrl(){
+				var textinput = document.getElementById("urlSource").value;
+				if(validURL(textinput)){
+					document.getElementById("urlDisplay").src = textinput;
+					//window.open(textinput);
+				}
+			}
+			
+			<!-- clear the pasted url from the html textbox urlSource -->
+			function clear1(){    
+				document.getElementById("urlSource").value= "";
+			}
+			
+			<!-- checks if url is a syntactical valid url with help of regular expressions -->
+			function validURL(textinput) {
+				var regex = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/;
+				if(!regex .test(textinput)) {
+					//alert(textinput + ' is not a valid URL!');
+					return false;
+				} else {
+					//alert('valid');
+					return true;
+				}
+			}
+		</script>
+		<!-- render textbox urlSource where url can be pasted and call function loadUrl with onkeyup event -->
+		<!-- use autofocus event to place cursor in textbox on page load -->
+		<!-- pasted url must be in http://www.xyz.com or https://www.xyz.com -->
+		<!-- you can also add value="http://" or value is "https://" to line 21 so that urls can be pasted just as www.xyz.com or xyz.com -->
+		<p>
+			<input type="text" id="urlSource" onkeyup="loadUrl()" autofocus="autofocus">
+		</p>
+		<!-- render iframe with pasted url and call function clear1 to clear the pasted url from the textbox urlSource -->
+		<!-- iframe width and height can be adjusted by setting width and height values in pixel -->
+		<p>
+			<iframe id="urlDisplay" src="https://google.de" width="1024" height="768" onload="clear1()"></iframe>
+		</p>
+	</body>
+</html>
